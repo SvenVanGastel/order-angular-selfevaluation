@@ -1,0 +1,22 @@
+<section>
+  <h3 class="section-title">Items</h3>
+
+  <ul class="card-list">
+    <li class="card" *ngFor="let item of items">
+      <div class="card-title">{{item.name}}</div>
+      <img class="card-image" src="assets/images/hey-apple.jpg" alt="item image">
+      <div class="card-footer">
+        <div>price: € {{item.price}}</div>
+        <!--<div class="stock"*ngIf="item.stockUrgency.LOW_STOCK ==>-->
+        <div class="stock" [ngSwitch]="item.stockUrgency">
+          <span *ngSwitchCase="'STOCK_LOW'">Low</span>
+          <img *ngSwitchCase="'STOCK_LOW'" class="icon" src="assets/images/warning-icon-red.png" alt="warning">
+          <span *ngSwitchCase="'STOCK_HIGH'">High</span>
+          <img *ngSwitchCase="'STOCK_HIGH'" class="icon" src="assets/images/warning-icon-green.png" alt="warning">
+          <span *ngSwitchCase="'STOCK_MEDIUM'">Medium</span>
+          <img *ngSwitchCase="'STOCK_MEDIUM'" class="icon" src="assets/images/warning-icon-orange.png" alt="warning">
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
